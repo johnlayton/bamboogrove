@@ -17,7 +17,7 @@ pluginManagement{
     }
 }
 
-rootProject.name = "content"
+rootProject.name = "bamboogrove"
 
 include(
     "armeria-demo",
