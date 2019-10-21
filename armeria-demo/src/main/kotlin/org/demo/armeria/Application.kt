@@ -1,16 +1,16 @@
 package org.demo.armeria
 
-import com.linecorp.armeria.common.*
-import com.linecorp.armeria.common.SessionProtocol.HTTP
+import com.linecorp.armeria.common.HttpHeaderNames
+import com.linecorp.armeria.common.HttpMethod
 import com.linecorp.armeria.common.SessionProtocol.HTTPS
 import com.linecorp.armeria.common.SessionProtocol.PROXY
 import com.linecorp.armeria.common.grpc.GrpcSerializationFormats
 import com.linecorp.armeria.common.grpc.protocol.GrpcHeaderNames
 import com.linecorp.armeria.server.ServerBuilder
 import com.linecorp.armeria.server.ServiceRequestContext
-import com.linecorp.armeria.server.annotation.*
-import com.linecorp.armeria.server.cors.CorsServiceBuilder.*
-import com.linecorp.armeria.server.docs.DocService
+import com.linecorp.armeria.server.annotation.Get
+import com.linecorp.armeria.server.annotation.Produces
+import com.linecorp.armeria.server.cors.CorsServiceBuilder.forOrigin
 import com.linecorp.armeria.server.docs.DocServiceBuilder
 import com.linecorp.armeria.server.grpc.GrpcServiceBuilder
 import io.grpc.protobuf.services.ProtoReflectionService
@@ -18,9 +18,7 @@ import io.grpc.stub.StreamObserver
 import org.slf4j.LoggerFactory
 import reactor.core.publisher.Flux
 import reactor.core.scheduler.Schedulers
-import java.sql.DriverManager
 import java.time.Duration
-
 
 object Application {
     private val logger = LoggerFactory.getLogger(Application::class.java)
@@ -109,8 +107,8 @@ object Application {
                     @Produces("application/json;charset=UTF-8")
                     fun users(): List<User> {
                         return listOf(
-                            User(1L, "john", "layton"),
-                            User(1L, "john", "layton")
+                            User(1L, "firstName", "lastName"),
+                            User(2L, "firstName", "lastName")
                         );
                     }
                 })
