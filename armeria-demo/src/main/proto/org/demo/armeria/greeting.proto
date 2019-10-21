@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package org.demo.armeria;
 
-//option java_package = "org.loopy.armeria";
+//option java_package = "org.demo.armeria";
 
 service HelloService {
     rpc Hello (HelloRequest) returns (HelloReply) {}

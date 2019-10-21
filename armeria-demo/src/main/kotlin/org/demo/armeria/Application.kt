@@ -41,7 +41,7 @@ object Application {
 
         val sb = ServerBuilder()
         val server = sb
-                .http(8080)
+//                .http(8080)
                 .https(8443)
                 .tlsSelfSigned()
                 //.tls(new File("certificate.crt"), new File("private.key"), "myPassphrase")
@@ -57,36 +57,36 @@ object Application {
                                 response.onCompleted()
                             }
                         })
-//                        .addService(object : UserServiceGrpc.UserServiceImplBase() {
-//                            override fun list(request: Users.Empty,
-//                                              response: StreamObserver<Users.User>) {
-////                                dao.list().
-//                                Flux.interval(Duration.ofSeconds(1))
-//                                        .take(5)
-//                                        .map { index ->
-//                                            Users.User.newBuilder()
-//                                                    .setId(index)
-//                                                    .setFirstName("firstName")
-//                                                    .setLastName("lastName")
-//                                                    .build()
-//                                        }
-//                                        // You can make your Flux/Mono publish the signals in the RequestContext-aware executor.
-//                                        .publishOn(Schedulers.fromExecutor(ServiceRequestContext.current().contextAwareExecutor()))
-//                                        .subscribe({ user ->
-//                                            // Confirm this callback is being executed on the RequestContext-aware executor.
-//                                            ServiceRequestContext.current()
-//                                            response.onNext(user)
-//                                        }, { cause ->
-//                                            // Confirm this callback is being executed on the RequestContext-aware executor.
-//                                            ServiceRequestContext.current()
-//                                            response.onError(cause)
-//                                        }, {
-//                                            // Confirm this callback is being executed on the RequestContext-aware executor.
-//                                            ServiceRequestContext.current()
-//                                            response.onCompleted()
-//                                        })
-//                            }
-//                        })
+                        .addService(object : UserServiceGrpc.UserServiceImplBase() {
+                            override fun list(request: Users.Empty,
+                                              response: StreamObserver<Users.User>) {
+//                                dao.list().
+                                Flux.interval(Duration.ofSeconds(1))
+                                        .take(5)
+                                        .map { index ->
+                                            Users.User.newBuilder()
+                                                    .setId(index)
+                                                    .setFirstName("firstName")
+                                                    .setLastName("lastName")
+                                                    .build()
+                                        }
+                                        // You can make your Flux/Mono publish the signals in the RequestContext-aware executor.
+                                        .publishOn(Schedulers.fromExecutor(ServiceRequestContext.current().contextAwareExecutor()))
+                                        .subscribe({ user ->
+                                            // Confirm this callback is being executed on the RequestContext-aware executor.
+                                            ServiceRequestContext.current()
+                                            response.onNext(user)
+                                        }, { cause ->
+                                            // Confirm this callback is being executed on the RequestContext-aware executor.
+                                            ServiceRequestContext.current()
+                                            response.onError(cause)
+                                        }, {
+                                            // Confirm this callback is being executed on the RequestContext-aware executor.
+                                            ServiceRequestContext.current()
+                                            response.onCompleted()
+                                        })
+                            }
+                        })
                         .addService(ProtoReflectionService.newInstance())
                         .supportedSerializationFormats(GrpcSerializationFormats.values())
                         .enableUnframedRequests(true)
@@ -106,20 +106,24 @@ object Application {
 //                        return HttpResponse.of(HttpStatus.OK)
 //                    }
 //                })
-//                .annotatedService(object : Any() {
-//                    @Get("/users")
-//                    @Produces("application/json;charset=UTF-8")
-//                    fun users(): List<User> {
-//                        return dao.list();
-//                    }
-//                })
+                .annotatedService(object : Any() {
+                    @Get("/users")
+                    @Produces("application/json;charset=UTF-8")
+                    fun users(): List<User> {
+                        return listOf(
+                            User(1L, "john", "layton"),
+                            User(1L, "john", "layton")
+                        );
+                    }
+                })
                 .serviceUnder("/docs", DocServiceBuilder()
-                  .exampleRequestForMethod(HelloServiceGrpc.SERVICE_NAME,
-                      "Hello", // Method name
-                      Greeting.HelloRequest.newBuilder().setName("Armeria").build())
+                        .exampleRequestForMethod(HelloServiceGrpc.SERVICE_NAME, "Hello", // Method name
+                                Greeting.HelloRequest.newBuilder().setName("Armeria").build())
+                        .exampleRequestForMethod(UserServiceGrpc.SERVICE_NAME, "List", // Method name
+                                Greeting.HelloRequest.newBuilder().setName("Armeria").build())
                     .build()
                 )
-                .port(8080, PROXY, HTTP)
+//                .port(8080, PROXY, HTTP)
                 .port(8443, PROXY, HTTPS)
                 .build()
 
