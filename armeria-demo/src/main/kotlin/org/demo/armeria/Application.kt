@@ -45,7 +45,6 @@ object Application {
                 .https(8443)
                 .tlsSelfSigned()
                 //.tls(new File("certificate.crt"), new File("private.key"), "myPassphrase")
-//                .service("/") { _, _ -> HttpResponse.of("Hello, world!") }
                 .service(GrpcServiceBuilder()
                         .addService(object : HelloServiceGrpc.HelloServiceImplBase() {
                             override fun hello(request: Greeting.HelloRequest,
@@ -60,7 +59,6 @@ object Application {
                         .addService(object : UserServiceGrpc.UserServiceImplBase() {
                             override fun list(request: Users.Empty,
                                               response: StreamObserver<Users.User>) {
-//                                dao.list().
                                 Flux.interval(Duration.ofSeconds(1))
                                         .take(5)
                                         .map { index ->
