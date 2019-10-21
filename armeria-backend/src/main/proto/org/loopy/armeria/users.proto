@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package org.loopy.armeria;
+
+//option java_package = "org.loopy.armeria";
+
+service UserService {
+    rpc List (Empty) returns (stream User) {
+    }
+}
+
+message User {
+    int64 id = 1;
+    string firstName = 2;
+    string lastName = 3;
+}
+
+message Empty {
+}
