@@ -21,5 +21,6 @@ rootProject.name = "bamboogrove"
 
 include(
     "armeria-demo",
+    "spring-demo",
     "armeria-backend"
 )
