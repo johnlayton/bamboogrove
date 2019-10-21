@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package org.demo.armeria;
+
+//option java_package = "org.loopy.armeria";
+
+service HelloService {
+    rpc Hello (HelloRequest) returns (HelloReply) {}
+}
+
+message HelloRequest {
+    string name = 1;
+}
+
+message HelloReply {
+    string message = 1;
+    int32 sequence = 2;
+}
