@@ -1,4 +1,4 @@
-package org.demo.spring.route
+package org.demo.spring
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

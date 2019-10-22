@@ -13,7 +13,9 @@ object Application {
   fun main(args: Array<String>) {
 
     val clientFactory = ClientFactoryBuilder()
-            .sslContextCustomizer { b -> b.trustManager(InsecureTrustManagerFactory.INSTANCE) }
+            .sslContextCustomizer {
+              b -> b.trustManager(InsecureTrustManagerFactory.INSTANCE)
+            }
             .build()
 
     val helloService = Clients.newClient(clientFactory, "gproto+https://127.0.0.1:8443/", HelloServiceGrpc.HelloServiceBlockingStub::class.java)

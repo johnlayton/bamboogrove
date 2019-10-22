@@ -1,6 +1,5 @@
-package org.demo.spring.controller
+package org.demo.spring
 
-import org.demo.spring.config.SimpleConfiguration
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Controller
