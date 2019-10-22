@@ -5,7 +5,7 @@ plugins {
     java
 //    kotlin("jvm")
     application
-    id("org.jetbrains.kotlin.jvm") version "1.3.41"
+//    id("org.jetbrains.kotlin.jvm") version "1.3.41"
     id("com.google.protobuf") version "0.8.10"
     id("com.google.cloud.tools.jib") version "1.3.0"
     idea

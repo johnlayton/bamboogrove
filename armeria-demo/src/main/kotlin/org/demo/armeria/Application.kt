@@ -3,6 +3,7 @@ package org.demo.armeria
 import com.linecorp.armeria.common.HttpHeaderNames
 import com.linecorp.armeria.common.HttpMethod
 import com.linecorp.armeria.common.SessionProtocol.HTTPS
+import com.linecorp.armeria.common.SessionProtocol.HTTP
 import com.linecorp.armeria.common.SessionProtocol.PROXY
 import com.linecorp.armeria.common.grpc.GrpcSerializationFormats
 import com.linecorp.armeria.common.grpc.protocol.GrpcHeaderNames
@@ -39,7 +40,7 @@ object Application {
 
         val sb = ServerBuilder()
         val server = sb
-//                .http(8080)
+                .http(8080)
                 .https(8443)
                 .tlsSelfSigned()
                 //.tls(new File("certificate.crt"), new File("private.key"), "myPassphrase")
@@ -119,7 +120,7 @@ object Application {
                                 Greeting.HelloRequest.newBuilder().setName("Armeria").build())
                     .build()
                 )
-//                .port(8080, PROXY, HTTP)
+                .port(8080, PROXY, HTTP)
                 .port(8443, PROXY, HTTPS)
                 .build()
 
