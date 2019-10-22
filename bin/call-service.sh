@@ -16,3 +16,7 @@ grpcurl --insecure -d '{ "name": "Armeria" }' localhost:8443 org.demo.armeria.He
 curl --insecure -X POST -H 'content-type: application/json; charset=utf-8; protocol=gRPC' 'https://localhost:8443/org.demo.armeria.HelloService/Hello' -d '{
   "name": "Armeria"
 }'
+
+#curl --insecure -X POST -H 'content-type: application/json; charset=utf-8; protocol=gRPC' 'http://localhost:8080/org.demo.armeria.HelloService/Hello' -d '{
+#  "name": "Armeria"
+#}'

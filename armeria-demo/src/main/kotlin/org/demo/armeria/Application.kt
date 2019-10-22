@@ -40,7 +40,7 @@ object Application {
 
         val sb = ServerBuilder()
         val server = sb
-                .http(8080)
+//                .http(8080)
                 .https(8443)
                 .tlsSelfSigned()
                 //.tls(new File("certificate.crt"), new File("private.key"), "myPassphrase")
@@ -120,7 +120,7 @@ object Application {
                                 Greeting.HelloRequest.newBuilder().setName("Armeria").build())
                     .build()
                 )
-                .port(8080, PROXY, HTTP)
+//                .port(8080, PROXY, HTTP)
                 .port(8443, PROXY, HTTPS)
                 .build()
 
