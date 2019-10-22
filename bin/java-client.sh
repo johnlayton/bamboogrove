@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-./gradlew armeria-client:run
+./gradlew armeria-client:build armeria-client:run

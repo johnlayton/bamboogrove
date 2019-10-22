@@ -1,7 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-//    id("org.jetbrains.kotlin.jvm") version "1.3.41"
+    java
+    id("org.jetbrains.kotlin.jvm") version "1.3.41"
     id("org.jetbrains.kotlin.plugin.spring") version "1.3.41"
     id("org.jetbrains.kotlin.plugin.jpa") version "1.3.41"
     id("org.springframework.boot") version "2.1.2.RELEASE"
@@ -28,8 +29,6 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-webflux")
-//    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-//    compile("com.h2database:h2")
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     compile("org.jetbrains.kotlin:kotlin-reflect")
     compile("com.fasterxml.jackson.module:jackson-module-kotlin")
