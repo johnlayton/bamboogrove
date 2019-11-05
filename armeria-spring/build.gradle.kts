@@ -1,13 +1,22 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+//plugins {
+//    java
+////    id("org.jetbrains.kotlin.jvm") version "1.3.41"
+//    id("org.jetbrains.kotlin.plugin.spring") version "1.3.50"
+//    id("org.jetbrains.kotlin.plugin.jpa") version "1.3.50"
+//
+//    id("org.springframework.boot") version "2.1.2.RELEASE"
+//    id("io.spring.dependency-management") version "1.0.6.RELEASE"
+//}
+
 plugins {
     java
-    id("org.jetbrains.kotlin.jvm") version "1.3.41"
-    id("org.jetbrains.kotlin.plugin.spring") version "1.3.41"
-    id("org.jetbrains.kotlin.plugin.jpa") version "1.3.41"
-
-    id("org.springframework.boot") version "2.1.2.RELEASE"
-    id("io.spring.dependency-management") version "1.0.6.RELEASE"
+    id("org.springframework.boot") version "2.2.0.RELEASE"
+    id("io.spring.dependency-management") version "1.0.8.RELEASE"
+    id("com.google.cloud.tools.jib") version "1.3.0"
+    kotlin("jvm")
+    kotlin("plugin.spring") version "1.3.50"
 }
 
 version = "1.0.0-SNAPSHOT"
@@ -34,15 +43,14 @@ dependencyManagement {
     }
 }
 
-springBoot {
-    mainClassName = "org.demo.spring.Main"
-}
+//springBoot {
+//    mainClassName = "org.demo.spring.Main"
+//}
 
 dependencies {
-
     compileOnly ("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
-    compile("org.springframework.boot:spring-boot-starter-web")
+//    compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-webflux")
     compile("com.linecorp.armeria:armeria-spring-boot-webflux-starter")
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -55,3 +63,4 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
+

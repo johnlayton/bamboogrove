@@ -1,4 +1,4 @@
-package org.demo.spring
+package org.demo.spring.config
 
 import com.linecorp.armeria.client.ClientFactory
 import com.linecorp.armeria.client.ClientFactoryBuilder

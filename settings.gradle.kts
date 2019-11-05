@@ -1,8 +1,8 @@
 pluginManagement{
     repositories {
+        gradlePluginPortal()
         mavenLocal()
         jcenter()
-        gradlePluginPortal()
         maven("https://plugins.gradle.org/m2/")
     }
     // The resolutionStrategy only needs to be configured for
@@ -22,6 +22,7 @@ rootProject.name = "bamboogrove"
 include(
     "armeria-demo",
     "armeria-client",
-    "spring-demo",
-    "armeria-backend"
+    "armeria-spring",
+    "armeria-backend",
+    "spring-backend"
 )
